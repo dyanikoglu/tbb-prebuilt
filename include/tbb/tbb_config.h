@@ -146,7 +146,7 @@
     Depending on the compiler, some features might still be unsupported or work incorrectly.
     Use it when enabling C++11 features individually is not practical, and be aware that
     some "good enough" compilers might be excluded. **/
-#define __TBB_CPP11_PRESENT (__cplusplus >= 201103L || _MSC_VER >= 1900)
+#define __TBB_CPP11_PRESENT 1
 
 #define __TBB_CPP17_FALLTHROUGH_PRESENT (__cplusplus >= 201703L)
 #define __TBB_FALLTHROUGH_PRESENT       (__TBB_GCC_VERSION >= 70000 && !__INTEL_COMPILER)
@@ -648,7 +648,7 @@ There are four cases that are supported:
     #define __TBB_DEPRECATED_VERBOSE_MSG(msg)
 #endif // (TBB_SUPPRESS_DEPRECATED_MESSAGES == 0)
 
-#if (!defined(TBB_SUPPRESS_DEPRECATED_MESSAGES) || (TBB_SUPPRESS_DEPRECATED_MESSAGES == 0)) && !__TBB_CPP11_PRESENT
+#if (!defined(TBB_SUPPRESS_DEPRECATED_MESSAGES) || (TBB_SUPPRESS_DEPRECATED_MESSAGES == 0)) && (__TBB_CPP11_PRESENT == 0)
     #pragma message("TBB Warning: Support for C++98/03 is deprecated. Please use the compiler that supports C++11 features at least.")
 #endif
 
